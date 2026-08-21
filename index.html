@@ -1,305 +1,1241 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EduSpark Class 10</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CineSpark AI — Movie Maker</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
+:root{
+  --bg:#080b12;
+  --card:#111827;
+  --card2:#151d2b;
+  --text:#f4f7fb;
+  --muted:#9ca8ba;
+  --purple:#8b5cf6;
+  --pink:#ec4899;
+  --blue:#38bdf8;
+  --green:#34d399;
+  --red:#fb7185;
+  --border:rgba(255,255,255,.08);
 }
 
-:root{
-  --purple:#6847e8;
-  --pink:#ff5c9a;
-  --blue:#20a9e8;
-  --dark:#182033;
-  --muted:#697386;
-  --card:#ffffff;
-}
+*{box-sizing:border-box}
 
 body{
-  font-family:Arial,Helvetica,sans-serif;
-  color:var(--dark);
-  min-height:100vh;
+  margin:0;
+  font-family:Inter,Arial,sans-serif;
+  color:var(--text);
   background:
-    radial-gradient(circle at 8% 8%,#d8f5ff 0,transparent 28%),
-    radial-gradient(circle at 95% 12%,#ffe0ef 0,transparent 30%),
-    radial-gradient(circle at 50% 100%,#e7e1ff 0,transparent 35%),
-    #f7f9ff;
+    radial-gradient(circle at 10% 10%,rgba(139,92,246,.18),transparent 30%),
+    radial-gradient(circle at 90% 90%,rgba(56,189,248,.12),transparent 30%),
+    var(--bg);
+  min-height:100vh;
+  padding:16px;
 }
 
-/* HEADER */
+button,input,textarea,select{font:inherit}
 
-header{
-  position:sticky;
-  top:0;
-  z-index:100;
+button{
+  cursor:pointer;
+}
+
+.appbar{
+  max-width:1400px;
+  margin:auto;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:15px 6%;
-  background:rgba(255,255,255,.88);
-  backdrop-filter:blur(15px);
-  box-shadow:0 5px 25px #0000000d;
+  gap:15px;
+  margin-bottom:16px;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
 }
 
 .logo{
-  font-size:24px;
+  width:50px;
+  height:50px;
+  border-radius:14px;
+  display:grid;
+  place-items:center;
   font-weight:900;
-  color:var(--purple);
+  background:linear-gradient(135deg,var(--purple),var(--pink));
+  box-shadow:0 10px 35px rgba(139,92,246,.3);
 }
 
-.logo span{
-  color:var(--pink);
+.title h1{
+  margin:0;
+  font-size:20px;
 }
 
-.class-badge{
-  padding:9px 15px;
-  border-radius:25px;
-  background:#eeeaff;
-  color:#5137c7;
-  font-weight:bold;
+.title p{
+  margin:4px 0 0;
+  color:var(--muted);
+  font-size:12px;
 }
 
-/* HERO */
+.controls{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  border:1px solid var(--border);
+  background:#151b27;
+  color:#dbe5f2;
+  padding:10px 14px;
+  border-radius:10px;
+  font-weight:600;
+}
+
+.btn:hover{
+  border-color:rgba(139,92,246,.6);
+  transform:translateY(-1px);
+}
+
+.btn.primary{
+  background:linear-gradient(90deg,var(--purple),var(--pink));
+  border:0;
+  color:white;
+}
+
+.btn.danger{
+  color:#fecdd3;
+  border-color:rgba(251,113,133,.3);
+}
+
+main{
+  max-width:1400px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 430px;
+  gap:16px;
+}
+
+.panel{
+  background:rgba(17,24,39,.88);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:16px;
+  box-shadow:0 15px 50px rgba(0,0,0,.25);
+}
 
 .hero{
-  max-width:1200px;
-  margin:auto;
-  padding:55px 20px 35px;
-  display:grid;
-  grid-template-columns:1.1fr .9fr;
-  gap:35px;
-  align-items:center;
+  background:
+    linear-gradient(135deg,rgba(139,92,246,.12),rgba(236,72,153,.05));
 }
 
-.hero h1{
-  font-size:clamp(40px,6vw,70px);
-  line-height:1.02;
+.hero h2{
+  margin:0 0 5px;
 }
 
-.hero h1 span{
-  color:var(--purple);
-}
-
-.hero-text{
-  margin-top:20px;
-  max-width:650px;
+.muted{
   color:var(--muted);
-  font-size:18px;
-  line-height:1.75;
-}
-
-.start-btn{
-  margin-top:25px;
-  border:0;
-  padding:15px 25px;
-  border-radius:30px;
-  background:linear-gradient(135deg,var(--purple),#9c69ff);
-  color:white;
-  font-size:16px;
-  font-weight:bold;
-  cursor:pointer;
-  box-shadow:0 12px 30px #6847e844;
-}
-
-/* TEACHER */
-
-.teacher-card{
-  background:rgba(255,255,255,.92);
-  border-radius:35px;
-  padding:30px;
-  text-align:center;
-  box-shadow:0 20px 55px #40318b20;
-}
-
-.teacher-circle{
-  width:190px;
-  height:190px;
-  margin:auto;
-  border-radius:50%;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  font-size:100px;
-  background:linear-gradient(135deg,#e8ddff,#d9f8ff);
-  box-shadow:inset 0 0 30px #ffffff;
-}
-
-.teacher-card h2{
-  margin-top:18px;
-}
-
-.teacher-card p{
-  margin-top:7px;
-  color:var(--muted);
-}
-
-.talk-btn{
-  margin-top:18px;
-  border:0;
-  padding:13px 21px;
-  border-radius:25px;
-  background:#eeeaff;
-  color:#5339ca;
-  font-weight:bold;
-  cursor:pointer;
-}
-
-/* SECTION */
-
-.section{
-  max-width:1200px;
-  margin:auto;
-  padding:30px 20px;
-}
-
-.section-title{
-  font-size:30px;
-  margin-bottom:22px;
-}
-
-/* SUBJECTS */
-
-.subject-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
-  gap:18px;
-}
-
-.subject{
-  background:white;
-  padding:25px;
-  border-radius:25px;
-  cursor:pointer;
-  box-shadow:0 8px 28px #0000000d;
-  transition:.25s;
-}
-
-.subject:hover{
-  transform:translateY(-7px);
-  box-shadow:0 15px 35px #00000016;
-}
-
-.subject-icon{
-  font-size:45px;
-  margin-bottom:14px;
-}
-
-.subject h3{
-  font-size:19px;
-}
-
-.subject p{
-  margin-top:7px;
-  color:var(--muted);
-  font-size:14px;
-}
-
-/* CHAPTERS */
-
-#chapterSection,
-#lessonSection{
-  display:none;
-}
-
-.back{
-  border:0;
-  padding:11px 17px;
-  border-radius:22px;
-  background:#ece9ff;
-  color:#5339ca;
-  cursor:pointer;
-  font-weight:bold;
-  margin-bottom:20px;
-}
-
-.chapter-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-  gap:18px;
-}
-
-.chapter{
-  background:white;
-  border-radius:23px;
-  padding:23px;
-  cursor:pointer;
-  box-shadow:0 8px 25px #0000000d;
-  transition:.2s;
-}
-
-.chapter:hover{
-  transform:translateY(-5px);
-}
-
-.chapter-number{
   font-size:13px;
-  color:var(--purple);
-  font-weight:bold;
 }
 
-.chapter h3{
-  margin-top:9px;
-}
-
-.chapter p{
-  margin-top:9px;
+label{
+  display:block;
   color:var(--muted);
+  font-size:13px;
+  margin:12px 0 6px;
+}
+
+textarea,
+input,
+select{
+  width:100%;
+  color:var(--text);
+  background:#0c121d;
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:11px;
+  outline:none;
+}
+
+textarea:focus,
+input:focus,
+select:focus{
+  border-color:var(--purple);
+}
+
+textarea{
+  resize:vertical;
+}
+
+#idea{
+  min-height:120px;
+}
+
+.row{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:10px;
+}
+
+.lists{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-top:15px;
+}
+
+.list-title{
+  font-weight:800;
+  margin-bottom:8px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.list{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.item{
+  background:var(--card2);
+  border:1px solid var(--border);
+  border-radius:11px;
+  padding:11px;
+}
+
+.item-head{
+  display:flex;
+  justify-content:space-between;
+  gap:8px;
+}
+
+.item-name{
+  font-weight:700;
+}
+
+.item small{
+  color:var(--muted);
+}
+
+.item-actions{
+  display:flex;
+  gap:5px;
+}
+
+.small-btn{
+  border:1px solid var(--border);
+  background:#0c121d;
+  color:#dbe5f2;
+  padding:5px 8px;
+  border-radius:7px;
+}
+
+.preview{
+  min-height:500px;
+}
+
+.preview-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  padding-bottom:12px;
+  border-bottom:1px solid var(--border);
+}
+
+.scene-card{
+  margin-top:14px;
+  background:#0b111c;
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:14px;
+  min-height:210px;
+}
+
+.scene-title{
+  font-size:18px;
+  font-weight:800;
+}
+
+.scene-body{
+  margin-top:12px;
+  line-height:1.6;
+  white-space:pre-wrap;
+  color:#d8e2ef;
+}
+
+.timeline{
+  display:flex;
+  gap:7px;
+  overflow-x:auto;
+  padding:12px 0;
+}
+
+.tick{
+  min-width:90px;
+  border:1px solid var(--border);
+  background:#111827;
+  color:#dbe5f2;
+  padding:9px;
+  border-radius:9px;
+}
+
+.tick.active{
+  border-color:var(--purple);
+  box-shadow:0 0 20px rgba(139,92,246,.2);
+}
+
+.player-controls{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:10px;
+}
+
+.projects{
+  margin-top:14px;
+}
+
+.project{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  align-items:center;
+  padding:10px;
+  margin-top:8px;
+  background:#0d1420;
+  border:1px solid var(--border);
+  border-radius:9px;
+}
+
+.screenplay{
+  margin-top:14px;
+}
+
+#screenplay{
+  min-height:240px;
+  font-family:monospace;
+}
+
+.empty{
+  color:var(--muted);
+  text-align:center;
+  padding:20px;
+}
+
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.7);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:15px;
+  z-index:100;
+}
+
+.modal.show{
+  display:flex;
+}
+
+.modal-box{
+  width:min(500px,100%);
+  background:#111827;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:18px;
+}
+
+.modal-actions{
+  display:flex;
+  justify-content:flex-end;
+  gap:8px;
+  margin-top:14px;
+}
+
+.loading{
+  display:none;
+  align-items:center;
+  gap:10px;
+  color:#c4b5fd;
+  margin-top:12px;
+}
+
+.loading.show{
+  display:flex;
+}
+
+.spinner{
+  width:22px;
+  height:22px;
+  border:3px solid rgba(255,255,255,.15);
+  border-top-color:var(--purple);
+  border-radius:50%;
+  animation:spin .8s linear infinite;
+}
+
+@keyframes spin{
+  to{transform:rotate(360deg)}
+}
+
+.toast{
+  position:fixed;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%) translateY(20px);
+  background:#182234;
+  border:1px solid var(--border);
+  padding:11px 16px;
+  border-radius:10px;
+  opacity:0;
+  pointer-events:none;
+  transition:.25s;
+  z-index:200;
+}
+
+.toast.show{
+  opacity:1;
+  transform:translateX(-50%) translateY(0);
+}
+
+.disclaimer{
+  margin-top:14px;
+  color:var(--muted);
+  font-size:12px;
   line-height:1.5;
 }
 
-/* LESSON */
-
-.lesson-card{
-  background:white;
-  padding:30px;
-  border-radius:30px;
-  box-shadow:0 12px 35px #00000010;
+@media(max-width:950px){
+  main{
+    grid-template-columns:1fr;
+  }
 }
 
-.lesson-title{
-  color:#5d42d6;
-  margin-bottom:22px;
+@media(max-width:600px){
+  body{padding:10px}
+
+  .appbar{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+  .lists{
+    grid-template-columns:1fr;
+  }
+
+  .preview{
+    min-height:450px;
+  }
+
+  .controls{
+    width:100%;
+  }
+
+  .controls .btn{
+    flex:1;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="appbar">
+
+  <div class="brand">
+    <div class="logo">CS</div>
+    <div class="title">
+      <h1>CineSpark AI</h1>
+      <p>Create original movies step by step</p>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button class="btn" id="langEN">🇬🇧 EN</button>
+    <button class="btn" id="langHI">🇮🇳 HI</button>
+    <button class="btn" id="sampleBtn">Sample Idea</button>
+    <button class="btn primary" id="saveBtn">💾 Save Project</button>
+  </div>
+
+</header>
+
+<main>
+
+<section>
+
+<div class="panel hero">
+
+  <h2 id="heroTitle">🎬 Start with a Movie Idea</h2>
+
+  <p class="muted">
+    Write your idea and CineSpark will create an original story,
+    characters, scenes and screenplay.
+  </p>
+
+  <label for="idea">Movie Idea</label>
+
+  <textarea id="idea"
+    placeholder="Example: A young Indian scientist discovers a mysterious machine that can stop time."></textarea>
+
+  <div class="row">
+
+    <button class="btn primary" id="generateStory">
+      ✨ Generate Story & Screenplay
+    </button>
+
+    <button class="btn" id="generateScenes">
+      🎞️ Generate Scenes
+    </button>
+
+    <button class="btn danger" id="clearBtn">
+      Clear
+    </button>
+
+  </div>
+
+  <div class="loading" id="loading">
+    <div class="spinner"></div>
+    <span id="loadingText">Creating your movie...</span>
+  </div>
+
+</div>
+
+
+<div class="panel" style="margin-top:14px">
+
+  <div class="lists">
+
+    <div>
+
+      <div class="list-title">
+        <span>👤 Characters</span>
+        <button class="small-btn" id="addCharacter">+ New</button>
+      </div>
+
+      <div class="list" id="characters"></div>
+
+    </div>
+
+
+    <div>
+
+      <div class="list-title">
+        <span>🎥 Scenes</span>
+        <button class="small-btn" id="addScene">+ Scene</button>
+      </div>
+
+      <div class="list" id="scenes"></div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<div class="panel projects">
+
+  <div class="list-title">
+    <span>📁 Saved Projects</span>
+    <button class="small-btn" id="refreshProjects">Refresh</button>
+  </div>
+
+  <div id="projects"></div>
+
+</div>
+
+
+<div class="disclaimer">
+  <b>Note:</b> This browser version uses a local story generator.
+  It does not send your movie idea to an external AI service.
+  For real cloud AI generation, an API/backend must be connected.
+</div>
+
+</section>
+
+
+<aside>
+
+<div class="panel preview">
+
+  <div class="preview-header">
+
+    <div>
+      <b>🎬 Preview Player</b>
+      <div class="muted">Preview your generated scenes</div>
+    </div>
+
+    <select id="voice" style="max-width:160px">
+      <option value="">Default Voice</option>
+    </select>
+
+  </div>
+
+
+  <div class="scene-card">
+
+    <div class="scene-title" id="previewTitle">
+      No scenes yet
+    </div>
+
+    <div class="muted" id="previewMeta">
+      Generate scenes to begin.
+    </div>
+
+    <div class="scene-body" id="previewBody">
+      Your selected scene will appear here.
+    </div>
+
+  </div>
+
+
+  <div>
+
+    <div class="list-title">
+      <span>Timeline</span>
+      <span class="muted">Tap a scene</span>
+    </div>
+
+    <div class="timeline" id="timeline"></div>
+
+  </div>
+
+
+  <div class="player-controls">
+
+    <button class="btn primary" id="playBtn">
+      ▶ Play
+    </button>
+
+    <button class="btn" id="pauseBtn">
+      ⏸ Pause
+    </button>
+
+    <button class="btn" id="speakBtn">
+      🗣️ Narrate
+    </button>
+
+  </div>
+
+
+  <label>🎵 Background Music</label>
+
+  <select id="music">
+    <option value="none">No Music</option>
+    <option value="ambient">Ambient</option>
+    <option value="pulse">Cinematic Pulse</option>
+  </select>
+
+
+  <label>🔊 Sound Effect</label>
+
+  <select id="sfx">
+    <option value="none">None</option>
+    <option value="beep">Cinematic Beep</option>
+    <option value="door">Door</option>
+  </select>
+
+</div>
+
+
+<div class="panel screenplay">
+
+  <div class="list-title">
+
+    <div>
+      <b>📝 Screenplay / Export</b>
+      <div class="muted">Your generated screenplay</div>
+    </div>
+
+    <button class="small-btn" id="exportBtn">
+      Export JSON
+    </button>
+
+  </div>
+
+  <textarea id="screenplay"
+    placeholder="Generated screenplay will appear here..."></textarea>
+
+</div>
+
+</aside>
+
+</main>
+
+
+<!-- CHARACTER MODAL -->
+
+<div class="modal" id="characterModal">
+
+  <div class="modal-box">
+
+    <h3 id="characterModalTitle">Add Character</h3>
+
+    <label>Name</label>
+    <input id="characterName" placeholder="e.g. Arjun">
+
+    <label>Role</label>
+    <input id="characterRole" placeholder="e.g. Scientist">
+
+    <label>Description</label>
+    <textarea id="characterDescription"
+      placeholder="Character personality and appearance"></textarea>
+
+    <div class="modal-actions">
+      <button class="btn" id="characterCancel">Cancel</button>
+      <button class="btn primary" id="characterSave">Save</button>
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- SCENE MODAL -->
+
+<div class="modal" id="sceneModal">
+
+  <div class="modal-box">
+
+    <h3 id="sceneModalTitle">Add Scene</h3>
+
+    <label>Scene Title</label>
+    <input id="sceneName" placeholder="e.g. The Discovery">
+
+    <label>Location</label>
+    <input id="sceneLocation" placeholder="e.g. Secret Laboratory">
+
+    <label>Time</label>
+    <select id="sceneTime">
+      <option>DAY</option>
+      <option>NIGHT</option>
+      <option>EVENING</option>
+      <option>MORNING</option>
+    </select>
+
+    <label>Scene Content</label>
+    <textarea id="sceneContent"
+      placeholder="Describe the action and dialogue"></textarea>
+
+    <div class="modal-actions">
+      <button class="btn" id="sceneCancel">Cancel</button>
+      <button class="btn primary" id="sceneSave">Save</button>
+    </div>
+
+  </div>
+
+</div>
+
+
+<div class="toast" id="toast"></div>
+
+
+<script>
+
+"use strict";
+
+/* =========================
+   CINESPARK AI
+   COMPLETE CLIENT VERSION
+========================= */
+
+const $ = id => document.getElementById(id);
+
+let state = {
+  id: Date.now().toString(36),
+  name: "Untitled Movie",
+  idea: "",
+  language: "en",
+  characters: [],
+  scenes: [],
+  screenplay: ""
+};
+
+let selectedScene = -1;
+let editingCharacter = -1;
+let editingScene = -1;
+let playTimer = null;
+
+
+/* =========================
+   UTILITIES
+========================= */
+
+function uid(){
+  return Date.now().toString(36) +
+         Math.random().toString(36).slice(2,7);
 }
 
-.lesson-card h3{
-  margin:22px 0 10px;
+function escapeHTML(value){
+  return String(value ?? "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
 }
 
-.explanation{
-  padding:20px;
-  border-radius:17px;
-  line-height:1.8;
-  color:#555f70;
-  background:#f5f3ff;
-  border-left:5px solid var(--purple);
+function toast(message){
+
+  const box = $("toast");
+
+  box.textContent = message;
+  box.classList.add("show");
+
+  setTimeout(()=>{
+    box.classList.remove("show");
+  },2200);
 }
 
-.hindi-box{
-  background:#fff4ea;
-  border-left-color:#ff873e;
+function loading(show,text){
+
+  $("loading").classList.toggle("show",show);
+
+  if(text){
+    $("loadingText").textContent = text;
+  }
 }
 
-.action-row{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-  margin-top:20px;
+
+/* =========================
+   SAVE / LOAD
+========================= */
+
+function saveProject(){
+
+  state.idea = $("idea").value;
+  state.screenplay = $("screenplay").value;
+
+  localStorage.setItem(
+    "cinespark_current",
+    JSON.stringify(state)
+  );
+
+  let projects =
+    JSON.parse(localStorage.getItem("cinespark_projects") || "{}");
+
+  projects[state.id] = {
+    ...state,
+    updatedAt:Date.now()
+  };
+
+  localStorage.setItem(
+    "cinespark_projects",
+    JSON.stringify(projects)
+  );
+
+  renderProjects();
+
+  toast("Project saved successfully ✓");
 }
 
-.action{
-  border:0;
-  padding:12px 17px;
-  border-radius:22px;
-  cursor:pointer;
-  font-weight:bold;
+
+function loadCurrent(){
+
+  try{
+
+    const raw =
+      localStorage.getItem("cinespark_current");
+
+    if(!raw) return;
+
+    const data = JSON.parse(raw);
+
+    state = {
+      ...state,
+      ...data
+    };
+
+    $("idea").value = state.idea || "";
+    $("screenplay").value = state.screenplay || "";
+
+  }catch(error){
+
+    console.log("Load error:",error);
+
+  }
 }
 
-.listen{
-  background:#e5f8ff;
-  color:#14627
+
+/* =========================
+   STORY GENERATOR
+========================= */
+
+function generateStory(){
+
+  const idea =
+    $("idea").value.trim();
+
+  if(!idea){
+
+    toast("First enter a movie idea.");
+    $("idea").focus();
+    return;
+  }
+
+  loading(true,"Creating your movie story...");
+
+  setTimeout(()=>{
+
+    const title =
+      makeTitle(idea);
+
+    state.name = title;
+    state.idea = idea;
+
+    createDefaultCharacters(idea);
+    createDefaultScenes(idea);
+
+    state.screenplay =
+      makeScreenplay(title,idea);
+
+    $("screenplay").value =
+      state.screenplay;
+
+    renderAll();
+
+    loading(false);
+
+    toast("Movie created successfully 🎬");
+
+  },1200);
+}
+
+
+function makeTitle(idea){
+
+  const words =
+    idea.replace(/[^\w\s]/g,"")
+       .split(/\s+/)
+       .filter(Boolean);
+
+  if(!words.length)
+    return "Untitled Movie";
+
+  const first =
+    words.slice(0,4)
+         .map(w =>
+           w.charAt(0).toUpperCase()+w.slice(1)
+         )
+         .join(" ");
+
+  return first + " — The Movie";
+}
+
+
+function createDefaultCharacters(idea){
+
+  if(state.characters.length)
+    return;
+
+  state.characters = [
+
+    {
+      id:uid(),
+      name:"Arjun",
+      role:"Main Hero",
+      description:"A brave young person who refuses to give up."
+    },
+
+    {
+      id:uid(),
+      name:"Maya",
+      role:"Main Companion",
+      description:"Smart, determined and loyal."
+    },
+
+    {
+      id:uid(),
+      name:"The Unknown",
+      role:"Mystery",
+      description:"A mysterious force connected to the central conflict."
+    }
+
+  ];
+}
+
+
+function createDefaultScenes(idea){
+
+  if(state.scenes.length)
+    return;
+
+  state.scenes = [
+
+    {
+      id:uid(),
+      title:"The Beginning",
+      location:"City",
+      time:"MORNING",
+      content:
+`The story begins.
+
+Arjun discovers that something unusual is happening.
+
+ARJUN:
+"I know something is wrong. I have to find the truth."`
+    },
+
+    {
+      id:uid(),
+      title:"The Discovery",
+      location:"Secret Location",
+      time:"EVENING",
+      content:
+`Arjun and Maya discover a hidden secret connected to the mystery.
+
+MAYA:
+"We cannot ignore this anymore."
+
+ARJUN:
+"Then we face it together."`
+    },
+
+    {
+      id:uid(),
+      title:"The Final Choice",
+      location:"Unknown",
+      time:"NIGHT",
+      content:
+`The danger reaches its highest point.
+
+Arjun must make a difficult choice.
+
+ARJUN:
+"Sometimes doing the right thing means risking everything."`
+    }
+
+  ];
+}
+
+
+function makeScreenplay(title,idea){
+
+  let text = "";
+
+  text += title.toUpperCase() + "\n";
+  text += "=".repeat(title.length) + "\n\n";
+
+  text += "LOGLINE\n";
+  text += idea + "\n\n";
+
+  text += "CHARACTERS\n\n";
+
+  state.characters.forEach(c=>{
+
+    text +=
+`${c.name} — ${c.role}
+${c.description}
+
+`;
+
+  });
+
+  text += "\nSCREENPLAY\n\n";
+
+  state.scenes.forEach((s,i)=>{
+
+    text +=
+`SCENE ${i+1}
+
+INT./EXT. ${s.location.toUpperCase()} — ${s.time}
+
+${s.content}
+
+`;
+
+  });
+
+  return text;
+}
+
+
+/* =========================
+   SCENE GENERATOR
+========================= */
+
+function generateScenes(){
+
+  const idea =
+    $("idea").value.trim();
+
+  if(!idea){
+
+    toast("Enter a movie idea first.");
+    return;
+  }
+
+  loading(true,"Generating cinematic scenes...");
+
+  setTimeout(()=>{
+
+    state.idea = idea;
+
+    if(!state.characters.length)
+      createDefaultCharacters(idea);
+
+    state.scenes = [];
+
+    const base =
+      idea.split(/\s+/)
+         .slice(0,6)
+         .join(" ");
+
+    const sceneData = [
+
+      [
+        "The Awakening",
+        "Unknown Location",
+        "MORNING",
+        `The protagonist wakes up and realizes that something has changed.
+
+ARJUN:
+"Where am I?"
+
+A strange sound echoes in the distance.`
+      ],
+
+      [
+        "The Secret",
+        "Hidden Laboratory",
+        "EVENING",
+        `A hidden object reveals a connection to the central mystery.
+
+MAYA:
+"This changes everything."
+
+ARJUN:
+"Then we need to move before they find us."`
+      ],
+
+      [
+        "The Chase",
+        "City Streets",
+        "NIGHT",
+        `The heroes race through the city while an unknown enemy follows them.
+
+Footsteps become louder.
+
+ARJUN:
+"Keep going! Don't look back!"`
+      ],
+
+      [
+        "The Final Battle",
+        "Unknown Fortress",
+        "NIGHT",
+        `The final confrontation begins.
+
+The heroes face the force behind the mystery.
+
+ARJUN:
+"This ends tonight."`
+      ]
+
+    ];
+
+    sceneData.forEach(item=>{
+
+      state.scenes.push({
+
+        id:uid(),
+        title:item[0],
+        location:item[1],
+        time:item[2],
+        content:item[3]
+
+      });
+
+    });
+
+    state.screenplay =
+      makeScreenplay(
+        makeTitle(idea),
+        idea
+      );
+
+    $("screenplay").value =
+      state.screenplay;
+
+    selectedScene = 0;
+
+    renderAll();
+
+    loading(false);
+
+    toast("Scenes generated 🎞️");
+
+  },1100);
+}
+
+
+/* =========================
+   RENDER CHARACTERS
+========================= */
+
+function renderCharacters(){
+
+  const box = $("characters");
+
+  if(!state.characters.length){
+
+    box.innerHTML =
+      `<div class="empty">No characters yet.</div>`;
+
+    return;
+  }
+
+  box.innerHTML =
+    state.characters.map((c,i)=>`
+
+      <div class="item">
+
+        <div class="item-head">
+
+          <div>
+            <div class="item-name">
+              ${escapeHTML(c.name)}
+            </div>
+
+            <small>
+              ${escapeHTML(c.role)}
+            </small>
+          </div>
+
+          <div class="item-actions">
+
+            <button
+              class="small-btn"
+              onclick="editCharacter(${i})">
+              Edit
+            </button>
+
+            <button
+              class="small-btn"
+              onclick="removeCharacter(${i})">
+              ×
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+  `).join("");
+}
+
+
+/* =========================
+   CHARACTER MODAL
+========================= */
+
+function openCharacter(index=-1){
+
+  editingCharacter = index;
+
+  $("
