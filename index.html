@@ -1,226 +1,954 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Class 10 Study App</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Class 10 Study App</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,sans-serif;
+}
 
-    body {
-      background: #f2f6ff;
-      color: #222;
-    }
+body{
+  background:#f3f7ff;
+  color:#172033;
+}
 
-    header {
-      background: #2563eb;
-      color: white;
-      padding: 25px 15px;
-      text-align: center;
-    }
+header{
+  background:#2563eb;
+  color:white;
+  text-align:center;
+  padding:28px 15px;
+}
 
-    header h1 {
-      font-size: 28px;
-      margin-bottom: 8px;
-    }
+header h1{
+  font-size:30px;
+  margin-bottom:8px;
+}
 
-    header p {
-      font-size: 15px;
-    }
+header p{
+  font-size:15px;
+}
 
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 20px;
-    }
+.container{
+  max-width:950px;
+  margin:auto;
+  padding:20px;
+}
 
-    .section-title {
-      margin: 20px 0 12px;
-      font-size: 22px;
-    }
+.page-title{
+  margin:10px 0 18px;
+}
 
-    .subjects {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
-    }
+.subjects{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
+}
 
-    .subject {
-      background: white;
-      padding: 20px;
-      border-radius: 15px;
-      text-align: center;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-      cursor: pointer;
-      transition: 0.2s;
-    }
+.subject{
+  background:white;
+  padding:22px 15px;
+  border-radius:16px;
+  text-align:center;
+  box-shadow:0 4px 12px rgba(0,0,0,.08);
+  cursor:pointer;
+  transition:.2s;
+}
 
-    .subject:hover {
-      transform: translateY(-3px);
-    }
+.subject:hover{
+  transform:translateY(-3px);
+}
 
-    .subject .icon {
-      font-size: 35px;
-      margin-bottom: 8px;
-    }
+.subject .icon{
+  font-size:38px;
+  margin-bottom:8px;
+}
 
-    .subject h3 {
-      color: #2563eb;
-    }
+.subject h3{
+  color:#2563eb;
+}
 
-    .card {
-      background: white;
-      margin-top: 20px;
-      padding: 20px;
-      border-radius: 15px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-    }
+.card{
+  background:white;
+  margin-top:20px;
+  padding:20px;
+  border-radius:16px;
+  box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
 
-    .card h2 {
-      margin-bottom: 10px;
-      color: #2563eb;
-    }
+.card h2{
+  color:#2563eb;
+  margin-bottom:12px;
+}
 
-    .quiz-btn {
-      background: #2563eb;
-      color: white;
-      border: none;
-      padding: 12px 20px;
-      border-radius: 10px;
-      margin-top: 15px;
-      cursor: pointer;
-      font-size: 16px;
-    }
+.card h3{
+  margin-bottom:10px;
+}
 
-    .quiz-btn:hover {
-      background: #1d4ed8;
-    }
+.chapter{
+  background:#eef4ff;
+  padding:15px;
+  margin:10px 0;
+  border-radius:10px;
+  cursor:pointer;
+  transition:.2s;
+}
 
-    footer {
-      text-align: center;
-      padding: 25px;
-      margin-top: 30px;
-      background: #172554;
-      color: white;
-    }
+.chapter:hover{
+  background:#dbeafe;
+}
 
-    @media (max-width: 600px) {
-      .subjects {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+.button{
+  background:#2563eb;
+  color:white;
+  border:none;
+  padding:12px 18px;
+  border-radius:10px;
+  margin-top:15px;
+  cursor:pointer;
+  font-size:15px;
+}
+
+.button:hover{
+  background:#1d4ed8;
+}
+
+.back{
+  background:#475569;
+}
+
+.info{
+  background:#f8fafc;
+  padding:14px;
+  border-radius:10px;
+  margin-top:10px;
+  line-height:1.6;
+}
+
+.question{
+  margin-top:15px;
+  padding:18px;
+  background:#f8fafc;
+  border-radius:12px;
+}
+
+.option{
+  display:block;
+  width:100%;
+  text-align:left;
+  background:white;
+  border:1px solid #d1d5db;
+  padding:13px;
+  margin:9px 0;
+  border-radius:9px;
+  cursor:pointer;
+}
+
+.option:hover{
+  background:#e8f0ff;
+}
+
+.score{
+  font-size:24px;
+  font-weight:bold;
+  margin:15px 0;
+  color:#2563eb;
+}
+
+.progress{
+  margin-top:10px;
+  color:#64748b;
+}
+
+footer{
+  text-align:center;
+  padding:25px;
+  margin-top:30px;
+  background:#172554;
+  color:white;
+}
+
+@media(max-width:600px){
+  .subjects{
+    grid-template-columns:1fr;
+  }
+
+  header h1{
+    font-size:25px;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <header>
-    <h1>📚 Class 10 Study App</h1>
-    <p>पढ़ाई करें • Quiz दें • अपना Score देखें</p>
-  </header>
+<header>
+  <h1>📚 Class 10 Study App</h1>
+  <p>Learn • Revise • Practice • Test Yourself</p>
+</header>
 
-  <div class="container">
+<div class="container">
 
-    <h2 class="section-title">📖 Subjects</h2>
+  <h2 class="page-title">📖 Choose Your Subject</h2>
 
-    <div class="subjects">
+  <div class="subjects">
 
-      <div class="subject" onclick="showSubject('गणित')">
-        <div class="icon">📐</div>
-        <h3>गणित</h3>
-      </div>
-
-      <div class="subject" onclick="showSubject('विज्ञान')">
-        <div class="icon">🔬</div>
-        <h3>विज्ञान</h3>
-      </div>
-
-      <div class="subject" onclick="showSubject('हिंदी')">
-        <div class="icon">📕</div>
-        <h3>हिंदी</h3>
-      </div>
-
-      <div class="subject" onclick="showSubject('English')">
-        <div class="icon">📘</div>
-        <h3>English</h3>
-      </div>
-
-      <div class="subject" onclick="showSubject('सामाजिक विज्ञान')">
-        <div class="icon">🌍</div>
-        <h3>सामाजिक विज्ञान</h3>
-      </div>
-
-      <div class="subject" onclick="showSubject('कंप्यूटर')">
-        <div class="icon">💻</div>
-        <h3>कंप्यूटर</h3>
-      </div>
-
+    <div class="subject" onclick="showSubject('Mathematics')">
+      <div class="icon">📐</div>
+      <h3>Mathematics</h3>
     </div>
 
-    <div class="card" id="content">
-      <h2>🎯 पढ़ाई शुरू करें</h2>
-      <p>
-        ऊपर किसी भी Subject पर क्लिक करें और पढ़ाई शुरू करें।
-      </p>
+    <div class="subject" onclick="showSubject('Science')">
+      <div class="icon">🔬</div>
+      <h3>Science</h3>
     </div>
 
-    <div class="card">
-      <h2>❓ Quick Quiz</h2>
+    <div class="subject" onclick="showSubject('English')">
+      <div class="icon">📘</div>
+      <h3>English</h3>
+    </div>
 
-      <p>
-        भारत की राजधानी क्या है?
-      </p>
+    <div class="subject" onclick="showSubject('Hindi')">
+      <div class="icon">📕</div>
+      <h3>Hindi</h3>
+    </div>
 
-      <button class="quiz-btn" onclick="checkAnswer('दिल्ली')">
-        दिल्ली
-      </button>
+    <div class="subject" onclick="showSubject('Social Science')">
+      <div class="icon">🌍</div>
+      <h3>Social Science</h3>
+    </div>
 
-      <button class="quiz-btn" onclick="checkAnswer('मुंबई')">
-        मुंबई
-      </button>
-
-      <button class="quiz-btn" onclick="checkAnswer('जयपुर')">
-        जयपुर
-      </button>
-
-      <p id="result" style="margin-top:15px;font-weight:bold;"></p>
+    <div class="subject" onclick="showSubject('Computer')">
+      <div class="icon">💻</div>
+      <h3>Computer</h3>
     </div>
 
   </div>
 
-  <footer>
-    © 2026 Class 10 Study App
-  </footer>
+  <div id="content" class="card">
+    <h2>🎯 Start Learning</h2>
+    <p>Select any subject above to see its chapters.</p>
+  </div>
 
-  <script>
-    function showSubject(subject) {
-      document.getElementById("content").innerHTML = `
-        <h2>📚 ${subject}</h2>
-        <p style="margin-top:10px;">
-          ${subject} के Notes और Chapters यहाँ दिखाई देंगे।
-        </p>
-        <button class="quiz-btn" onclick="alert('जल्द ही इस विषय के Chapters जोड़ेंगे!')">
-          Chapters देखें
-        </button>
-      `;
-    }
+</div>
 
-    function checkAnswer(answer) {
-      const result = document.getElementById("result");
+<footer>
+  © 2026 Class 10 Study App
+</footer>
 
-      if (answer === "दिल्ली") {
-        result.innerHTML = "✅ सही उत्तर! बहुत बढ़िया!";
-      } else {
-        result.innerHTML = "❌ गलत उत्तर। सही उत्तर: दिल्ली";
-      }
-    }
-  </script>
+
+<script>
+
+/* =========================
+   CHAPTER DATA
+========================= */
+
+const chapters = {
+
+Mathematics: [
+"Real Numbers",
+"Polynomials",
+"Pair of Linear Equations in Two Variables",
+"Quadratic Equations",
+"Arithmetic Progressions",
+"Triangles",
+"Coordinate Geometry",
+"Introduction to Trigonometry",
+"Some Applications of Trigonometry",
+"Circles",
+"Areas Related to Circles",
+"Surface Areas and Volumes",
+"Statistics",
+"Probability"
+],
+
+Science: [
+"Chemical Reactions and Equations",
+"Acids, Bases and Salts",
+"Metals and Non-metals",
+"Carbon and Its Compounds",
+"Periodic Classification of Elements",
+"Life Processes",
+"Control and Coordination",
+"How Do Organisms Reproduce?",
+"Heredity",
+"Light – Reflection and Refraction",
+"The Human Eye and the Colourful World",
+"Electricity",
+"Magnetic Effects of Electric Current",
+"Our Environment"
+],
+
+English: [
+"A Letter to God",
+"Nelson Mandela: Long Walk to Freedom",
+"Two Stories about Flying",
+"From the Diary of Anne Frank",
+"Glimpses of India",
+"Mijbil the Otter",
+"Madam Rides the Bus",
+"The Sermon at Benares",
+"The Proposal",
+"Dust of Snow",
+"Fire and Ice",
+"A Tiger in the Zoo",
+"How to Tell Wild Animals",
+"The Ball Poem",
+"Amanda!",
+"The Trees",
+"Fog",
+"The Tale of Custard the Dragon",
+"For Anne Gregory"
+],
+
+Hindi: [
+"Surdas",
+"Ram-Lakshman-Parshuram Samvad",
+"Aatmakathya",
+"Utsah",
+"Yeh Danturit Muskaan",
+"Sangatkar",
+"Netaji Ka Chashma",
+"Bal Gobin Bhagat",
+"Lucknowi Andaaz",
+"Ek Kahani Yeh Bhi",
+"Naubatkhane Mein Ibadat",
+"Sanskriti"
+],
+
+"Social Science": [
+"Resources and Development",
+"Forest and Wildlife Resources",
+"Water Resources",
+"Agriculture",
+"Minerals and Energy Resources",
+"Manufacturing Industries",
+"Lifelines of National Economy",
+"Power Sharing",
+"Federalism",
+"Gender, Religion and Caste",
+"Political Parties",
+"Outcomes of Democracy",
+"Development",
+"Sectors of the Indian Economy",
+"Money and Credit",
+"Globalisation and the Indian Economy"
+],
+
+Computer: [
+"Computer Fundamentals",
+"Computer Hardware",
+"Computer Software",
+"Operating Systems",
+"Internet and Web",
+"Computer Networks",
+"HTML Basics",
+"CSS Basics",
+"JavaScript Basics",
+"Cyber Safety",
+"Digital Communication"
+]
+
+};
+
+
+/* =========================
+   SUMMARY DATA
+========================= */
+
+const summaries = {
+
+"Real Numbers":
+"Real numbers include rational and irrational numbers. Important ideas include Euclid's division algorithm, prime factorisation and the relationship between HCF and LCM.",
+
+"Polynomials":
+"A polynomial is an algebraic expression made using variables, constants and non-negative integer powers. Zeros of a polynomial and the relationship between zeros and coefficients are important.",
+
+"Pair of Linear Equations in Two Variables":
+"This chapter deals with two linear equations having two variables. Graphical and algebraic methods can be used to find their solution.",
+
+"Quadratic Equations":
+"A quadratic equation is an equation of degree two. It can be solved by factorisation, completing the square or using the quadratic formula.",
+
+"Arithmetic Progressions":
+"An arithmetic progression is a sequence in which the difference between consecutive terms remains constant. The nth term and sum of terms are important concepts.",
+
+"Triangles":
+"This chapter covers similarity of triangles, criteria for similarity and important results related to proportional sides.",
+
+"Coordinate Geometry":
+"Coordinate geometry connects algebra with geometry. Distance formula, section formula and area of a triangle are important topics.",
+
+"Introduction to Trigonometry":
+"Trigonometry studies relationships between angles and sides of right triangles. Sine, cosine and tangent are the basic ratios.",
+
+"Some Applications of Trigonometry":
+"Trigonometry can be used to find heights and distances when direct measurement is difficult.",
+
+"Circles":
+"This chapter studies tangents to circles and important properties of tangents.",
+
+"Areas Related to Circles":
+"The chapter focuses on calculating areas and perimeters involving circles, sectors and segments.",
+
+"Surface Areas and Volumes":
+"This chapter deals with surface areas and volumes of solids such as cylinders, cones and spheres.",
+
+"Statistics":
+"Statistics deals with collecting, organising and interpreting numerical data. Mean, median and mode are important measures.",
+
+"Probability":
+"Probability measures how likely an event is to happen. It is expressed using values from 0 to 1.",
+
+"Chemical Reactions and Equations":
+"Chemical reactions involve changes in substances. Chemical equations represent reactions using symbols and formulas.",
+
+"Acids, Bases and Salts":
+"Acids and bases have different properties. Indicators help identify them, while salts are formed in many important reactions.",
+
+"Metals and Non-metals":
+"Metals generally show properties such as conductivity and malleability, while non-metals generally have different physical and chemical properties.",
+
+"Carbon and Its Compounds":
+"Carbon forms a very large number of compounds because of its tetravalency and ability to form chains.",
+
+"Periodic Classification of Elements":
+"Elements are arranged in the periodic table according to atomic number. Their properties show periodic trends.",
+
+"Life Processes":
+"Life processes include nutrition, respiration, transportation and excretion. These processes are necessary for maintaining life.",
+
+"Control and Coordination":
+"Organisms coordinate their activities using nervous and hormonal systems.",
+
+"How Do Organisms Reproduce?":
+"Reproduction allows organisms to produce new individuals. It may occur through asexual or sexual methods.",
+
+"Heredity":
+"Heredity is the transmission of characteristics from parents to offspring. Genes play an important role in inheritance.",
+
+"Light – Reflection and Refraction":
+"Light can be reflected or refracted. Mirrors and lenses form images according to their optical properties.",
+
+"The Human Eye and the Colourful World":
+"The human eye detects light and forms images. The chapter also explains common defects of vision and atmospheric effects.",
+
+"Electricity":
+"Electricity involves electric current, potential difference and resistance. Ohm's law describes an important relationship between them.",
+
+"Magnetic Effects of Electric Current":
+"Electric current produces a magnetic field. Electromagnets, motors and generators are based on magnetic effects.",
+
+"Our Environment":
+"An ecosystem includes living organisms and their surroundings. Food chains, food webs and environmental issues are important topics.",
+
+"A Letter to God":
+"This story focuses on faith, hope and human kindness through the experience of a farmer whose crops are destroyed by a storm.",
+
+"Nelson Mandela: Long Walk to Freedom":
+"This chapter presents ideas about freedom, courage, equality and the struggle against racial discrimination.",
+
+"Two Stories about Flying":
+"These stories explore fear, courage, confidence and the experience of flying.",
+
+"From the Diary of Anne Frank":
+"Anne Frank's diary presents her thoughts, feelings and experiences during a difficult period of her life.",
+
+"Glimpses of India":
+"This chapter presents different cultural and geographical aspects of India through travel-based descriptions.",
+
+"Mijbil the Otter":
+"The story describes the bond between a person and an otter and the experiences they share.",
+
+"Madam Rides the Bus":
+"The story follows a young girl's curiosity and her independent bus journey.",
+
+"The Sermon at Benares":
+"This chapter teaches important lessons about death, suffering and acceptance.",
+
+"The Proposal":
+"This humorous play revolves around marriage, arguments and misunderstandings.",
+
+"Dust of Snow":
+"The poem shows how a small moment in nature can change a person's mood.",
+
+"Fire and Ice":
+"The poem discusses destructive human emotions through the images of fire and ice.",
+
+"A Tiger in the Zoo":
+"The poem contrasts the life of a tiger in captivity with its natural freedom.",
+
+"How to Tell Wild Animals":
+"This humorous poem describes wild animals in a playful way.",
+
+"The Ball Poem":
+"The poem explores loss, responsibility and learning to accept reality.",
+
+"Amanda!":
+"The poem presents a child's desire for freedom and the pressure caused by constant instructions.",
+
+"The Trees":
+"The poem uses trees to represent freedom and movement towards the natural world.",
+
+"Fog":
+"The poem compares fog to a cat because of the quiet and mysterious way it arrives.",
+
+"The Tale of Custard the Dragon":
+"This humorous poem explores courage, bravery and unexpected heroism.",
+
+"For Anne Gregory":
+"The poem reflects on inner beauty and the difference between physical appearance and true love.",
+
+"Resources and Development":
+"Resources are materials and conditions that can be used to satisfy human needs. Sustainable development aims to use resources responsibly.",
+
+"Forest and Wildlife Resources":
+"Forests and wildlife are important natural resources. Conservation is necessary to protect biodiversity.",
+
+"Water Resources":
+"Water is essential for life, agriculture and industry. Conservation and management of water resources are important.",
+
+"Agriculture":
+"Agriculture is an important economic activity. Different crops require different climatic and soil conditions.",
+
+"Minerals and Energy Resources":
+"Minerals and energy resources are important for industry and development. They may be renewable or non-renewable.",
+
+"Manufacturing Industries":
+"Manufacturing converts raw materials into useful products and contributes to employment and economic development.",
+
+"Lifelines of National Economy":
+"Transport and communication connect people, markets and regions and support economic activities.",
+
+"Power Sharing":
+"Power sharing helps reduce conflict and strengthens democratic government.",
+
+"Federalism":
+"Federalism divides powers between different levels of government while maintaining national unity.",
+
+"Gender, Religion and Caste":
+"This chapter examines how social differences can influence politics and democratic participation.",
+
+"Political Parties":
+"Political parties contest elections, form governments and provide policies and programmes to citizens.",
+
+"Outcomes of Democracy":
+"Democracy is expected to provide accountable government, improve decision-making and accommodate social diversity.",
+
+"Development":
+"Development involves improvements in income, education, health, security and quality of life.",
+
+"Sectors of the Indian Economy":
+"The economy can be divided into primary, secondary and tertiary sectors based on the nature of economic activities.",
+
+"Money and Credit":
+"Money makes transactions easier, while credit provides funds for different economic activities.",
+
+"Globalisation and the Indian Economy":
+"Globalisation connects economies through trade, investment, technology and production networks.",
+
+"Computer Fundamentals":
+"Computer fundamentals introduce the basic concepts of computers, data, input, processing and output.",
+
+"Computer Hardware":
+"Hardware refers to the physical components of a computer such as the processor, memory, keyboard and display.",
+
+"Computer Software":
+"Software consists of programs and instructions that tell computer hardware what to do.",
+
+"Operating Systems":
+"An operating system manages computer hardware and provides services for applications and users.",
+
+"Internet and Web":
+"The Internet connects computer networks around the world. The Web provides information through websites and web pages.",
+
+"Computer Networks":
+"A computer network allows devices to communicate and share resources.",
+
+"HTML Basics":
+"HTML is used to structure content on web pages using elements such as headings, paragraphs, links and images.",
+
+"CSS Basics":
+"CSS is used to control the appearance and layout of web pages.",
+
+"JavaScript Basics":
+"JavaScript adds behaviour and interactivity to web pages.",
+
+"Cyber Safety":
+"Cyber safety involves protecting accounts, devices and personal information from online threats.",
+
+"Digital Communication":
+"Digital communication allows information to be exchanged electronically using computers and networks."
+
+};
+
+
+/* =========================
+   QUIZ DATA
+========================= */
+
+const quizBank = {
+
+Mathematics:[
+{
+q:"What is the sum of the angles of a triangle?",
+a:["90°","180°","270°","360°"],
+c:1
+},
+{
+q:"What is the probability of an impossible event?",
+a:["0","1","2","-1"],
+c:0
+},
+{
+q:"What is the degree of a quadratic polynomial?",
+a:["1","2","3","4"],
+c:1
+}
+],
+
+Science:[
+{
+q:"Which process is used by green plants to make food?",
+a:["Respiration","Photosynthesis","Digestion","Transpiration"],
+c:1
+},
+{
+q:"What is the SI unit of electric current?",
+a:["Volt","Ohm","Ampere","Watt"],
+c:2
+},
+{
+q:"Which gas is commonly used by plants during photosynthesis?",
+a:["Oxygen","Nitrogen","Carbon dioxide","Hydrogen"],
+c:2
+}
+],
+
+English:[
+{
+q:"Who wrote 'A Letter to God'?",
+a:["G. L. Fuentes","Robert Frost","Anne Frank","Nelson Mandela"],
+c:0
+},
+{
+q:"Who wrote 'Dust of Snow'?",
+a:["Robert Frost","William Wordsworth","John Keats","William Shakespeare"],
+c:0
+},
+{
+q:"'The Proposal' is a",
+a:["Poem","Play","Novel","Biography"],
+c:1
+}
+],
+
+Hindi:[
+{
+q:"Surdas is mainly associated with devotion to",
+a:["Krishna","Shiva","Buddha","Mahavira"],
+c:0
+},
+{
+q:"Hindi is written mainly in which script?",
+a:["Roman","Devanagari","Arabic","Greek"],
+c:1
+},
+{
+q:"Poetry is called what in Hindi?",
+a:["Kavita","Kahani","Natak","Patra"],
+c:0
+}
+],
+
+"Social Science":[
+{
+q:"Which form of government is based on people's participation?",
+a:["Dictatorship","Democracy","Monarchy","Military rule"],
+c:1
+},
+{
+q:"Which sector involves cultivation and farming?",
+a:["Primary","Secondary","Tertiary","IT"],
+c:0
+},
+{
+q:"Which resource is renewable?",
+a:["Coal","Petroleum","Solar energy","Natural gas"],
+c:2
+}
+],
+
+Computer:[
+{
+q:"What does HTML stand for?",
+a:[
+"HyperText Markup Language",
+"HighText Machine Language",
+"Hyperlink Text Management Language",
+"Home Tool Markup Language"
+],
+c:0
+},
+{
+q:"Which language is mainly used to style web pages?",
+a:["HTML","CSS","Python","SQL"],
+c:1
+},
+{
+q:"Which language can add interactivity to a web page?",
+a:["JavaScript","HTML","CSS","XML"],
+c:0
+}
+]
+
+};
+
+
+/* =========================
+   FUNCTIONS
+========================= */
+
+function showSubject(subject){
+
+let html=`
+<h2>📚 ${subject}</h2>
+<p>Select a chapter to start studying.</p>
+`;
+
+chapters[subject].forEach((chapter,index)=>{
+
+html+=`
+<div class="chapter"
+onclick="showChapter('${subject}',${index})">
+📖 Chapter ${index+1}: ${chapter}
+</div>
+`;
+
+});
+
+html+=`
+<button class="button back" onclick="goHome()">
+⬅ Back to Subjects
+</button>
+`;
+
+document.getElementById("content").innerHTML=html;
+
+}
+
+
+function showChapter(subject,index){
+
+const chapter=chapters[subject][index];
+
+const summary=summaries[chapter] ||
+"This chapter contains important concepts for Class 10 students. Read, revise and practise the important topics carefully.";
+
+document.getElementById("content").innerHTML=`
+
+<h2>📖 ${chapter}</h2>
+
+<div class="card">
+
+<h3>📝 Chapter Summary</h3>
+
+<div class="info">
+${summary}
+</div>
+
+</div>
+
+<div class="card">
+
+<h3>📌 Key Points</h3>
+
+<div class="info">
+• Understand the main concepts.<br>
+• Learn important definitions and formulas.<br>
+• Practise questions related to the chapter.<br>
+• Revise the chapter before your examination.
+</div>
+
+</div>
+
+<div class="card">
+
+<h3>❓ Chapter Quiz</h3>
+
+<p>Test your knowledge with a short quiz.</p>
+
+<button class="button"
+onclick="startQuiz('${subject}')">
+Start Quiz
+</button>
+
+</div>
+
+<button class="button back"
+onclick="showSubject('${subject}')">
+⬅ Back to Chapters
+</button>
+`;
+
+}
+
+
+let currentSubject="";
+let currentQuestion=0;
+let score=0;
+
+
+function startQuiz(subject){
+
+currentSubject=subject;
+currentQuestion=0;
+score=0;
+
+showQuestion();
+
+}
+
+
+function showQuestion(){
+
+const questions=quizBank[currentSubject];
+
+if(currentQuestion>=questions.length){
+
+showResult();
+return;
+
+}
+
+const item=questions[currentQuestion];
+
+let options="";
+
+item.a.forEach((option,index)=>{
+
+options+=`
+<button class="option"
+onclick="checkAnswer(${index})">
+${option}
+</button>
+`;
+
+});
+
+document.getElementById("content").innerHTML=`
+
+<h2>❓ ${currentSubject} Quiz</h2>
+
+<div class="progress">
+Question ${currentQuestion+1} of ${questions.length}
+</div>
+
+<div class="question">
+
+<h3>${item.q}</h3>
+
+${options}
+
+<p id="answerResult"></p>
+
+</div>
+
+<button class="button back"
+onclick="showSubject('${currentSubject}')">
+⬅ Exit Quiz
+</button>
+`;
+
+}
+
+
+function checkAnswer(selected){
+
+const item=quizBank[currentSubject][currentQuestion];
+
+const result=document.getElementById("answerResult");
+
+if(selected===item.c){
+
+score++;
+
+result.innerHTML="✅ Correct!";
+
+}else{
+
+result.innerHTML=
+"❌ Incorrect. Correct answer: "+item.a[item.c];
+
+}
+
+setTimeout(()=>{
+
+currentQuestion++;
+
+showQuestion();
+
+},900);
+
+}
+
+
+function showResult(){
+
+document.getElementById("content").innerHTML=`
+
+<h2>🏆 Quiz Complete!</h2>
+
+<div class="card">
+
+<div class="score">
+Your Score: ${score} / ${quizBank[currentSubject].length}
+</div>
+
+<p>
+${
+score===quizBank[currentSubject].length
+? "🎉 Excellent! You got all answers correct!"
+: score>=2
+? "👍 Good job! Keep practising."
+: "📚 Keep studying and try the quiz again."
+}
+</p>
+
+<button class="button"
+onclick="startQuiz('${currentSubject}')">
+🔄 Try Again
+</button>
+
+<button class="button back"
+onclick="showSubject('${currentSubject}')">
+⬅ Back to Chapters
+</button>
+
+</div>
+`;
+
+}
+
+
+function goHome(){
+
+document.getElementById("content").innerHTML=`
+
+<h2>🎯 Start Learning</h2>
+
+<p>Select any subject above to see its chapters.</p>
+
+`;
+
+}
+
+</script>
 
 </body>
-  </html>
+</html>
