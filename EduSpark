@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>EduSpark - Class 10 Smart Learning</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial,sans-serif;
+  color:#172033;
+  background:#f4f7ff;
+}
+
+/* TOP BAR */
+
+.topbar{
+  background:#171b3a;
+  color:white;
+  padding:14px 6%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo{
+  font-size:24px;
+  font-weight:900;
+}
+
+.logo span{
+  color:#63e6be;
+}
+
+.badge{
+  background:#ffffff20;
+  padding:8px 15px;
+  border-radius:20px;
+}
+
+/* HERO */
+
+.hero{
+  min-height:520px;
+  padding:55px 6%;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+  align-items:center;
+  background:
+    radial-gradient(circle at 80% 20%,#c8f7ff,transparent 30%),
+    radial-gradient(circle at 20% 80%,#e8d9ff,transparent 35%),
+    white;
+}
+
+.hero h1{
+  font-size:clamp(42px,6vw,72px);
+  line-height:1;
+}
+
+.hero h1 span{
+  color:#6554e8;
+}
+
+.hero p{
+  margin-top:20px;
+  color:#657085;
+  font-size:18px;
+  line-height:1.7;
+  max-width:620px;
+}
+
+.main-btn{
+  margin-top:25px;
+  padding:15px 25px;
+  border:0;
+  border-radius:30px;
+  background:#6554e8;
+  color:white;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+/* TEACHER */
+
+.teacher{
+  max-width:430px;
+  width:100%;
+  margin:auto;
+  padding:30px;
+  border-radius:35px;
+  background:white;
+  text-align:center;
+  box-shadow:0 25px 60px #2d255c22;
+}
+
+.teacher-avatar{
+  width:190px;
+  height:190px;
+  margin:auto;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:105px;
+  background:linear-gradient(135deg,#dcd6ff,#cdf7ff);
+}
+
+.teacher h2{
+  margin-top:18px;
+}
+
+.teacher p{
+  margin-top:8px;
+  font-size:14px;
+}
+
+/* SECTIONS */
+
+.section{
+  max-width:1200px;
+  margin:auto;
+  padding:50px 6%;
+}
+
+.section h2{
+  font-size:32px;
+  margin-bottom:25px;
+}
+
+/* SUBJECTS */
+
+.subjects{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:18px;
+}
+
+.subject{
+  background:white;
+  padding:25px;
+  border-radius:25px;
+  cursor:pointer;
+  box-shadow:0 8px 30px #0000000d;
+  transition:.2s;
+}
+
+.subject:hover{
+  transform:translateY(-6px);
+}
+
+.subject-icon{
+  font-size:45px;
+}
+
+.subject h3{
+  margin-top:12px;
+}
+
+.subject p{
+  color:#788194;
+  margin-top:7px;
+  font-size:14px;
+}
+
+/* CHAPTER */
+
+#chapters{
+  display:none;
+}
+
+.chapter-list{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:18px;
+}
+
+.chapter{
+  background:white;
+  padding:24px;
+  border-radius:22px;
+  cursor:pointer;
+  box-shadow:0 8px 25px #0000000d;
+}
+
+.chapter small{
+  color:#6554e8;
+  font-weight:bold;
+}
+
+.chapter h3{
+  margin-top:10px;
+}
+
+.chapter p{
+  color:#747e91;
+  margin-top:8px;
+  line-height:1.5;
+}
+
+/* LESSON */
+
+#lesson{
+  display:none;
+}
+
+.lesson-card{
+  background:white;
+  padding:30px;
+  border-radius:30px;
+  box-shadow:0 10px 35px #0000000d;
+}
+
+.lesson-card h3{
+  margin:24px 0 10px;
+}
+
+.text-box{
+  padding:20px;
+  border-radius:18px;
+  line-height:1.8;
+  background:#f2f0ff;
+  border-left:5px solid #6554e8;
+}
+
+.hindi{
+  background:#fff4e8;
+  border-left-color:#ff8a3d;
+}
+
+.buttons{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:20px;
+}
+
+.btn{
+  padding:12px 17px;
+  border:0;
+  border-radius:22px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.blue{
+  background:#e4f8ff;
+}
+
+.orange{
+  background:#fff0e4;
+}
+
+.purple{
+  background:#eeeaff;
+}
+
+/* TEACHER CHAT */
+
+#chat{
+  display:none;
+  margin-top:25px;
+  border-radius:25px;
+  overflow:hidden;
+  background:white;
+  box-shadow:0 10px 35px #00000012;
+}
+
+.chat-head{
+  padding:20px;
+  color:white;
+  background:#6554e8;
+}
+
+.chat-head p{
+  margin-top:5px;
+  opacity:.9;
+}
+
+.messages{
+  height:300px;
+  overflow-y:auto;
+  padding:20px;
+  background:#f7f8ff;
+}
+
+.message{
+  max-width:82%;
+  padding:13px 16px;
+  margin-bottom:12px;
+  border-radius:17px;
+  line-height:1.5;
+}
+
+.teacher-msg{
+  background:white;
+}
+
+.student-msg{
+  margin-left:auto;
+  color:white;
+  background:#6554e8;
+}
+
+.input-area{
+  display:flex;
+  gap:8px;
+  padding:14px;
+}
+
+.input-area input{
+  flex:1;
+  border:1px solid #ddd;
+  border-radius:25px;
+  padding:13px 16px;
+  outline:none;
+}
+
+.input-area button{
+  border:0;
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  cursor:pointer;
+}
+
+.send{
+  color:white;
+  background:#6554e8;
+}
+
+.mic{
+  background:#e3f8ff;
+}
+
+/* QUIZ */
+
+.quiz{
+  margin-top:25px;
+  background:white;
+  padding:25px;
+  border-radius:25px;
+}
+
+.option{
+  display:block;
+  width:100%;
+  padding:14px;
+  margin-top:10px;
+  text-align:left;
+  background:white;
+  border:1px solid #ddd;
+  border-radius:13px;
+  cursor:pointer;
+}
+
+.option:hover{
+  background:#f0eeff;
+}
+
+#result{
+  margin-top:15px;
+  font-weight:bold;
+}
+
+/* FOOTER */
+
+footer{
+  background:#171b3a;
+  color:white;
+  text-align:center;
+  padding:40px 20px;
+  margin-top:40px;
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+  .hero{
+    grid-template-columns:1fr;
+    text-align:center;
+  }
+
+  .teacher{
+    max-width:350px;
+  }
+
+  .teacher-avatar{
+    width:150px;
+    height:150px;
+    font-size:80px;
+  }
+
+  .topbar{
+    padding:13px 4%;
+  }
+
+  .logo{
+    font-size:20px;
+  }
+
+}
+</style>
+</head>
+
+
+<body>
+
+<!-- HEADER -->
+
+<header class="topbar">
+
+  <div class="logo">
+    📚 Edu<span>Spark</span>
+  </div>
+
+  <div class="badge">
+    Class 10 🎓
+  </div>
+
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+  <div>
+
+    <h1>
+      Your Class 10<br>
+      <span>Smart Classroom</span>
+    </h1>
+
+    <p>
+      Learn chapters, understand difficult topics,
+      listen to explanations and ask your digital
+      teacher questions whenever you need help.
+    </p>
+
+    <button class="main-btn"
+      onclick="goSubjects()">
+      🚀 Start Learning
+    </button>
+
+  </div>
+
+
+  <div class="teacher">
+
+    <div class="teacher-avatar">
+      👩‍🏫
+    </div>
+
+    <h2>
+      Meet Your Teacher
+    </h2>
+
+    <p>
+      Friendly • Patient • Helpful
+    </p>
+
+    <button class="main-btn"
+      onclick="openChat()">
+      🎤 Talk to Teacher
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- SUBJECTS -->
+
+<section class="section" id="subjectArea">
+
+  <h2>
+    📚 Choose Your Subject
+  </h2>
+
+  <div class="subjects">
+
+    <div class="subject"
+      onclick="showChapters('science')">
+
+      <div class="subject-icon">🔬</div>
+
+      <h3>Science</h3>
+
+      <p>
+        Physics • Chemistry • Biology
+      </p>
+
+    </div>
+
+
+    <div class="subject"
+      onclick="showChapters('math')">
+
+      <div class="subject-icon">📐</div>
+
+      <h3>Mathematics</h3>
+
+      <p>
+        Numbers • Algebra • Geometry
+      </p>
+
+    </div>
+
+
+    <div class="subject"
+      onclick="showChapters('english')">
+
+      <div class="subject-icon">📖</div>
+
+      <h3>English</h3>
+
+      <p>
+        Reading • Grammar • Literature
+      </p>
+
+    </div>
+
+
+    <div class="subject"
+      onclick="showChapters('sst')">
+
+      <div class="subject-icon">🌍</div>
+
+      <h3>Social Science</h3>
+
+      <p>
+        History • Geography • Civics
+      </p>
+
+    </div>
+
+
+    <div class="subject"
+      onclick="showChapters('computer')">
+
+      <div class="subject-icon">💻</div>
+
+      <h3>Computer</h3>
+
+      <p>
+        Technology • Coding
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- CHAPTERS -->
+
+<section class="section" id="chapters">
+
+  <button class="btn purple"
+    onclick="backSubjects()">
+    ← Subjects
+  </button>
+
+  <h2 id="chapterHeading"></h2>
+
+  <div class="chapter-list"
+    id="chapterList">
+  </div>
+
+</section>
+
+
+<!-- LESSON -->
+
+<section class="section" id="lesson">
+
+  <button class="btn purple"
+    onclick="backChapters()">
+    ← Chapters
+  </button>
+
+  <div class="lesson-card">
+
+    <h2 id="lessonTitle"></h2>
+
+
+    <h3>
+      📖 English Explanation
+    </h3>
+
+    <div class="text-box"
+      id="english">
+    </div>
+
+
+    <h3>
+      🇮🇳 आसान Hindi Explanation
+    </h3>
+
+    <div class="text-box hindi"
+      id="hindi">
+    </div>
+
+
+    <div class="buttons">
+
+      <button class="btn blue"
+        onclick="speakEnglish()">
+        🔊 Listen English
+      </button>
+
+      <button class="btn blue"
+        onclick="speakHindi()">
+        🔊 Hindi में सुनें
+      </button>
+
+      <button class="btn orange"
+        onclick="stopSpeech()">
+        ⏹ Stop
+      </button>
+
+      <button class="btn purple"
+        onclick="openChat()">
+        👩‍🏫 Ask Teacher
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- QUIZ -->
+
+  <div class="quiz">
+
+    <h2>
+      🧠 Quick Test
+    </h2>
+
+    <p id="question"
+      style="margin-top:12px">
+    </p>
+
+    <div id="options">
+    </div>
+
+    <p id="result">
+    </p>
+
+  </div>
+
+
+  <!-- CHAT -->
+
+  <div id="chat">
+
+    <div class="chat-head">
+
+      <h2>
+        👩‍🏫 Smart Teacher
+      </h2>
+
+      <p>
+        Ask about the chapter.
+      </p>
+
+    </div>
+
+
+    <div class="messages"
+      id="messages">
+
+      <div class="message teacher-msg">
+        👋 Hello! I'm your teacher.
+        Ask me what you don't understand
+        and I'll explain it simply.
+      </div>
+
+    </div>
+
+
+    <div class="input-area">
+
+      <input
+        id="userInput"
+        placeholder="Type your question..."
+        onkeydown="if(event.key==='Enter')sendQuestion()"
+      >
+
+      <button class="mic"
+        onclick="voiceInput()">
+        🎤
+      </button>
+
+      <button class="send"
+        onclick="sendQuestion()">
+        ➤
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<footer>
+
+  📚 EduSpark Class 10
+
+  <br><br>
+
+  Learn • Understand • Practice • Grow
+
+</footer>
+
+
+<script>
+
+/* DATA */
+
+const data={
+
+science:{
+name:"🔬 Science",
+chapters:[
+
+{
+title:"Life Processes",
+
+english:
+"Life processes are the basic activities that living organisms perform to stay alive. Important life processes include nutrition, respiration, transportation and excretion. Plants make their food by photosynthesis, while animals obtain food from other organisms.",
+
+hindi:
+"Life Processes यानी जीवन प्रक्रियाएँ वे जरूरी activities हैं जो जीवित organisms को जीवित रहने में मदद करती हैं। Nutrition, respiration, transportation और excretion मुख्य life processes हैं। पौधे photosynthesis द्वारा अपना भोजन बनाते हैं।",
+
+question:"Green plants prepare their food by which process?",
+
+options:[
+"Respiration",
+"Photosynthesis",
+"Excretion",
+"Digestion"
+],
+
+answer:1
+
+},
+
+{
+title:"Control and Coordination",
+
+english:
+"Control and coordination help an organism respond to changes in its surroundings. In humans, the nervous system and hormones coordinate different activities of the body.",
+
+hindi:
+"Control and Coordination शरीर को आसपास होने वाले बदलावों के अनुसार प्रतिक्रिया देने में मदद करता है। मनुष्य में nervous system और hormones शरीर की activities को control और coordinate करते हैं।",
+
+question:"Which system is important for coordination in humans?",
+
+options:[
+"Digestive system",
+"Nervous system",
+"Excretory system",
+"Respiratory system"
+],
+
+answer:1
+
+}
+
+]
+},
+
+
+math:{
+name:"📐 Mathematics",
+chapters:[
+
+{
+title:"Real Numbers",
+
+english:
+"Real numbers include rational and irrational numbers. The Euclidean division algorithm is an important method for finding the HCF of two positive integers.",
+
+hindi:
+"Real Numbers में rational और irrational numbers शामिल होते हैं। Euclidean division algorithm की मदद से दो positive integers का HCF निकाला जा सकता है।",
+
+question:"Which algorithm can be used to find HCF?",
+
+options:[
+"Euclidean algorithm",
+"Sorting algorithm",
+"Search algorithm",
+"Drawing algorithm"
+],
+
+answer:0
+
+},
+
+{
+title:"Polynomials",
+
+english:
+"A polynomial is an algebraic expression containing variables, coefficients and non-negative integer powers. A zero of a polynomial is a value of the variable that makes the polynomial equal to zero.",
+
+hindi:
+"Polynomial एक algebraic expression है जिसमें variables, coefficients और non-negative integer powers होते हैं। Polynomial का zero वह value होती है जिसके लिए polynomial का value zero हो जाता है।",
+
+question:"What is a zero of a polynomial?",
+
+options:[
+"A value that makes it zero",
+"A colour",
+"A chapter",
+"A symbol only"
+],
+
+answer:0
+
+}
+
+]
+},
+
+
+english:{
+name:"📖 English",
+chapters:[
+
+{
+title:"Reading Skills",
+
+english:
+"Effective reading means understanding the main idea, important details and the purpose of the writer. A good reader thinks about the meaning instead of only reading the words.",
+
+hindi:
+"अच्छी reading का मतलब केवल words पढ़ना नहीं है। एक अच्छा reader main idea, important details और writer का purpose समझने की कोशिश करता है।",
+
+question:"What should a good reader understand?",
+
+options:[
+"Only words",
+"Main idea and details",
+"Only page numbers",
+"Book price"
+],
+
+answer:1
+
+}
+
+]
+},
+
+
+sst:{
+name:"🌍 Social Science",
+chapters:[
+
+{
+title:"Power Sharing",
+
+english:
+"Power sharing is desirable because it reduces the possibility of conflict between social groups. It also helps maintain political stability and gives different groups a role in decision-making.",
+
+hindi:
+"Power Sharing जरूरी है क्योंकि इससे अलग-अलग social groups के बीच conflict कम होता है। इससे political stability बनी रहती है और अलग-अलग groups को decision-making में भाग लेने का मौका मिलता है।",
+
+question:"What is one benefit of power sharing?",
+
+options:[
+"It increases conflict",
+"It reduces conflict",
+"It ends democracy",
+"It removes elections"
+],
+
+answer:1
+
+}
+
+]
+},
+
+
+computer:{
+name:"💻 Computer",
+chapters:[
+
+{
+title:"Introduction to Computers",
+
+english:
+"A computer is an electronic machine that accepts data as input, processes it according to instructions and produces useful information as output. Computers are used in education, business, science and communication.",
+
+hindi:
+"Computer एक electronic machine है जो data को input के रूप में लेता है, instructions के अनुसार उसे process करता है और useful information output के रूप में देता है।",
+
+question:"What does a computer process?",
+
+options:[
+"Data",
+"Only books",
+"Nothing",
+"Only pictures"
+],
+
+answer:0
+
+}
+
+]
+}
+
+};
+
+
+/* VARIABLES */
+
+let currentSubject=null;
+let currentChapter=null;
+
+
+/* SUBJECTS */
+
+function showChapters(subject){
+
+currentSubject=subject;
+
+let item=data[subject];
+
+document.getElementById("subjectArea").style.display="none";
+
+document.getElementById("lesson").style.display="none";
+
+document.getElementById("chapters").style.display="block";
+
+document.getElementById("chapterHeading").textContent=item.name;
+
+let list=document.getElementById("chapterList");
+
+list.innerHTML="";
+
+item.chapters.forEach((chapter,index)=>{
+
+let div=document.createElement("div");
+
+div.className="chapter";
+
+div.innerHTML=`
+
+<small>CHAPTER ${index+1}</small>
+
+<h3>
+📘 ${chapter.title}
+</h3>
+
+<p>
+Read • Listen • Practice • Ask Teacher
+</p>
+
+`;
+
+div.onclick=()=>openChapter(chapter);
+
+list.appendChild(div);
+
+});
+
+document.getElementById("chapters")
+.scrollIntoView({behavior:"smooth"});
+
+}
+
+
+/* OPEN CHAPTER */
+
+function openChapter(chapter){
+
+currentChapter=chapter;
+
+document.getElementById("chapters").style.display="none";
+
+document.getElementById("lesson").style.display="block";
+
+document.getElementById("lessonTitle").textContent=
+"📘 "+chapter.title;
+
+document.getElementById("english").textContent=
+chapter.english;
+
+document.getElementById("hindi").textContent=
+chapter.hindi;
+
+document.getElementById("question").textContent=
+chapter.question;
+
+let options=document.getElementById("options");
+
+options.innerHTML="";
+
+chapter.options.forEach((option,index)=>{
+
+let button=document.createElement("button");
+
+button.className="option";
+
+button.textContent=option;
+
+button.onclick=()=>checkAnswer(index);
+
+options.appendChild(button);
+
+});
+
+document.getElementById("result").textContent="";
+
+document.getElementById("lesson")
+.scrollIntoView({behavior:"smooth"});
+
+}
+
+
+/* QUIZ */
+
+function checkAnswer(index){
+
+let result=document.getElementById("result");
+
+if(index===currentChapter.answer){
+
+result.textContent=
+"🎉 Correct! Excellent work.";
+
+result.style.color="green";
+
+}else{
+
+result.textContent=
+"🙂 Not correct. Read the explanation again and try.";
+
+result.style.color="red";
+
+}
+
+}
+
+
+/* SPEECH */
+
+function speak(text,lang){
+
+if(!window.speechSynthesis){
+
+alert("Text-to-Speech is not supported in this browser.");
+
+return;
+
+}
+
+speechSynthesis.cancel();
+
+let speech=new SpeechSynthesisUtterance(text);
+
+speech.lang=lang;
+
+speech.rate=.88;
+
+speech.pitch=1;
+
+speechSynthesis.speak(speech);
+
+}
+
+
+function speakEnglish(){
+
+speak(currentChapter.english,"en-US");
+
+}
+
+
+function speakHindi(){
+
+speak(currentChapter.hindi,"hi-IN");
+
+}
+
+
+function stopSpeech(){
+
+speechSynthesis.cancel();
+
+}
+
+
+/* CHAT */
+
+function openChat(){
+
+if(!currentChapter){
+
+alert("Please open a chapter first.");
+
+return;
+
+}
+
+document.getElementById("chat").style.display="block";
+
+document.getElementById("chat")
+.scrollIntoView({behavior:"smooth"});
+
+}
+
+
+function addMessage(text,type){
+
+let messages=document.getElementById("messages");
+
+let div=document.createElement("div");
+
+div.className="message "+type;
+
+div.textContent=text;
+
+messages.appendChild(div);
+
+messages.scrollTop=messages.scrollHeight;
+
+}
+
+
+function sendQuestion(){
+
+let input=document.getElementById("userInput");
+
+let question=input.value.trim();
+
+if(!question)return;
+
+addMessage(question,"student-msg");
+
+input.value="";
+
+setTimeout(()=>{
+
+let q=question.toLowerCase();
+
+let reply="";
+
+if(q.includes("hello")||q.includes("hi")||q.includes("नमस्ते")){
+
+reply="Hello! 👋 I'm your teacher. Ask me anything about this chapter.";
+
+}
+
+else if(q.includes("example")||q.includes("उदाहरण")){
+
+reply="Sure! 😊 Let's understand it with a simple example. "+currentChapter.hindi;
+
+}
+
+else if(q.includes("again")||q.includes("फिर")||q.includes("समझ")){
+
+reply="No problem. 👩‍🏫 I'll explain it more simply: "+currentChapter.hindi;
+
+}
+
+else{
+
+reply="Good question! 👩‍🏫 We are learning "+currentChapter.title+". Here's the simple explanation: "+currentChapter.hindi;
+
+}
+
+addMessage(reply,"teacher-msg");
+
+speak(reply,"hi-IN");
+
+},600);
+
+}
+
+
+/* VOICE INPUT */
+
+function voiceInput(){
+
+let Recognition=
+window.SpeechRecognition||
+window.webkitSpeechRecognition;
+
+if(!Recognition){
+
+alert("Voice input is not supported. Please try Chrome.");
+
+return;
+
+}
+
+let recognition=new Recognition();
+
+recognition.lang="hi-IN";
+
+recognition.start();
+
+recognition.onresult=function(event){
+
+document.getElementById("userInput").value=
+event.results[0][0].transcript;
+
+sendQuestion();
+
+};
+
+}
+
+
+/* NAVIGATION */
+
+function goSubjects(){
+
+document.getElementById("chapters").style.display="none";
+
+document.getElementById("lesson").style.display="none";
+
+document.getElementById("subjectArea").style.display="block";
+
+document.getElementById("subjectArea")
+.scrollIntoView({behavior:"smooth"});
+
+}
+
+
+function backSubjects(){
+
+goSubjects();
+
+}
+
+
+function backChapters(){
+
+document.getElementById("lesson").style.display="none";
+
+document.getElementById("chapters").style.display="block";
+
+document.getElementById("chapters")
+.scrollIntoView({behavior:"smooth"});
+
+}
+
+</script>
+
+</body>
+</html>
