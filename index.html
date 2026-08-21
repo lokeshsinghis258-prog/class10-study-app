@@ -1,1 +1,226 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Class 10 Study App</title>
 
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f2f6ff;
+      color: #222;
+    }
+
+    header {
+      background: #2563eb;
+      color: white;
+      padding: 25px 15px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    header p {
+      font-size: 15px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .section-title {
+      margin: 20px 0 12px;
+      font-size: 22px;
+    }
+
+    .subjects {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    .subject {
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .subject:hover {
+      transform: translateY(-3px);
+    }
+
+    .subject .icon {
+      font-size: 35px;
+      margin-bottom: 8px;
+    }
+
+    .subject h3 {
+      color: #2563eb;
+    }
+
+    .card {
+      background: white;
+      margin-top: 20px;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    }
+
+    .card h2 {
+      margin-bottom: 10px;
+      color: #2563eb;
+    }
+
+    .quiz-btn {
+      background: #2563eb;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 10px;
+      margin-top: 15px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .quiz-btn:hover {
+      background: #1d4ed8;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      margin-top: 30px;
+      background: #172554;
+      color: white;
+    }
+
+    @media (max-width: 600px) {
+      .subjects {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>📚 Class 10 Study App</h1>
+    <p>पढ़ाई करें • Quiz दें • अपना Score देखें</p>
+  </header>
+
+  <div class="container">
+
+    <h2 class="section-title">📖 Subjects</h2>
+
+    <div class="subjects">
+
+      <div class="subject" onclick="showSubject('गणित')">
+        <div class="icon">📐</div>
+        <h3>गणित</h3>
+      </div>
+
+      <div class="subject" onclick="showSubject('विज्ञान')">
+        <div class="icon">🔬</div>
+        <h3>विज्ञान</h3>
+      </div>
+
+      <div class="subject" onclick="showSubject('हिंदी')">
+        <div class="icon">📕</div>
+        <h3>हिंदी</h3>
+      </div>
+
+      <div class="subject" onclick="showSubject('English')">
+        <div class="icon">📘</div>
+        <h3>English</h3>
+      </div>
+
+      <div class="subject" onclick="showSubject('सामाजिक विज्ञान')">
+        <div class="icon">🌍</div>
+        <h3>सामाजिक विज्ञान</h3>
+      </div>
+
+      <div class="subject" onclick="showSubject('कंप्यूटर')">
+        <div class="icon">💻</div>
+        <h3>कंप्यूटर</h3>
+      </div>
+
+    </div>
+
+    <div class="card" id="content">
+      <h2>🎯 पढ़ाई शुरू करें</h2>
+      <p>
+        ऊपर किसी भी Subject पर क्लिक करें और पढ़ाई शुरू करें।
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>❓ Quick Quiz</h2>
+
+      <p>
+        भारत की राजधानी क्या है?
+      </p>
+
+      <button class="quiz-btn" onclick="checkAnswer('दिल्ली')">
+        दिल्ली
+      </button>
+
+      <button class="quiz-btn" onclick="checkAnswer('मुंबई')">
+        मुंबई
+      </button>
+
+      <button class="quiz-btn" onclick="checkAnswer('जयपुर')">
+        जयपुर
+      </button>
+
+      <p id="result" style="margin-top:15px;font-weight:bold;"></p>
+    </div>
+
+  </div>
+
+  <footer>
+    © 2026 Class 10 Study App
+  </footer>
+
+  <script>
+    function showSubject(subject) {
+      document.getElementById("content").innerHTML = `
+        <h2>📚 ${subject}</h2>
+        <p style="margin-top:10px;">
+          ${subject} के Notes और Chapters यहाँ दिखाई देंगे।
+        </p>
+        <button class="quiz-btn" onclick="alert('जल्द ही इस विषय के Chapters जोड़ेंगे!')">
+          Chapters देखें
+        </button>
+      `;
+    }
+
+    function checkAnswer(answer) {
+      const result = document.getElementById("result");
+
+      if (answer === "दिल्ली") {
+        result.innerHTML = "✅ सही उत्तर! बहुत बढ़िया!";
+      } else {
+        result.innerHTML = "❌ गलत उत्तर। सही उत्तर: दिल्ली";
+      }
+    }
+  </script>
+
+</body>
+  </html>
